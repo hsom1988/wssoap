@@ -59,4 +59,15 @@ public class EjemploSoap {
          datos.add(new Producto(3, "Papas3", 6.6 , "imagen3"));
          return datos;
     }
+    
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "crearProductos")
+    public String crearProductos(@WebParam(name = "producto") Producto producto) {
+         /*
+        Implementar la logica de ingreso a la base de datos
+        */
+         return "OK";
+    }
 }
