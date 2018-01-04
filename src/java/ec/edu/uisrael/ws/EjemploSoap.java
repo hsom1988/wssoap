@@ -32,4 +32,16 @@ public class EjemploSoap {
         //TODO write your implementation code here:
         return n1 + n2;
     }
+    
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "login")
+    public String login(@WebParam(name = "user") String user, @WebParam(name = "pwd") String pwd) {
+        //TODO write your implementation code here:
+        if (user.equals("uisrael") && pwd.equals("123")){
+            return "OK";
+        }
+        return "-1";
+    }
 }
