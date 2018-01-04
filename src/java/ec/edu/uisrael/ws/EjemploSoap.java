@@ -5,6 +5,9 @@
  */
 package ec.edu.uisrael.ws;
 
+import ec.edu.uisrael.ws.entidades.Producto;
+import java.util.ArrayList;
+import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -43,5 +46,17 @@ public class EjemploSoap {
             return "OK";
         }
         return "-1";
+    }
+    
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "listarProductos")
+    public List<Producto> listarProductos() {
+         List<Producto> datos = new ArrayList<Producto>();
+         datos.add(new Producto(1, "Papas1", 0.6 , "imagen1"));
+         datos.add(new Producto(2, "Papas2", 1.6 , "imagen2"));
+         datos.add(new Producto(3, "Papas3", 6.6 , "imagen3"));
+         return datos;
     }
 }
