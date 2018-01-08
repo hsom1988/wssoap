@@ -5,9 +5,12 @@
  */
 package ec.edu.uisrael.ws;
 
+import ec.edu.uisrael.ws.ejb.controladores.AdministradorCategProdBean;
+import ec.edu.uisrael.ws.ejb.entidades.CategoriaProducto;
 import ec.edu.uisrael.ws.entidades.Producto;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -51,13 +54,14 @@ public class EjemploSoap {
     /**
      * Web service operation
      */
-    @WebMethod(operationName = "listarProductos")
-    public List<Producto> listarProductos() {
-         List<Producto> datos = new ArrayList<Producto>();
-         datos.add(new Producto(1, "Papas1", 0.6 , "imagen1"));
-         datos.add(new Producto(2, "Papas2", 1.6 , "imagen2"));
-         datos.add(new Producto(3, "Papas3", 6.6 , "imagen3"));
-         return datos;
+    @WebMethod(operationName = "listarCategoriaProductos")
+    public List<Object> listarCategoriaProductos() {
+        try {
+            return new AdministradorCategProdBean().listar(CategoriaProducto.class);
+        } catch (Exception ex) {
+            Logger.getLogger(EjemploSoap.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
     /**
